@@ -22,6 +22,10 @@ prog##command("dev")##describe("Build the source directory. Expects an `index.js
   Console.log({j|aku ga async bos $start |j});
 })
 
+prog##command("init")##describe("Initialize project files")##example("init")##action(() => {
+  Js.Promise.(Generate.run() |> resolve);
+});
+
 prog##parse(Node.Process.argv, {
   "unknown": (arg: string) => {j|Uknown option $arg|j}
 });
