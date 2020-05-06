@@ -14,12 +14,13 @@
     "lulu": "./src/cli/lulu"
   },
   "license": "MIT",
-  "devDependencies": {},
+  "devDependencies": {
+    "bs-platform": "7.3"
+  },
   "dependencies": {
+    "glob": "^7.1.6",
     "kleur": "3.0.3",
     "sade": "1.7.3"
   },
-  "peerDependencies": {
-    "bs-platform": "7.3"
-  }
+  "peerDependencies": {}
 }
