@@ -1,10 +1,10 @@
-[@bs.module "fs-extra"]
-external outputFile: (string, string) => Js.Promise.t(unit) = "outputFile";
+open Module.Fs_Extra;
+open Default_template;
 
 let run = () => {
   let tasks = [|
-    outputFile("src/pages/index.re", ""),
-    outputFile("src/templates/default.re", ""),
+    outputFile("src/pages/index.md", index()),
+    outputFile("src/templates/default.re", layout()),
     outputFile("src/components/Header.re", ""),
   |];
 
