@@ -11,11 +11,15 @@
   ],
   "author": "",
   "license": "MIT",
-  "devDependencies": {
-    "bs-platform": "7.3.1"
-  },
+  "devDependencies": {},
   "dependencies": {
     "kleur": "3.0.3",
-    "sade": "1.7.3"
+    "rehype-format": "^3.0.1",
+    "sade": "1.7.3",
+    "to-vfile": "^6.1.0",
+    "vfile-reporter": "^6.0.1"
+  },
+  "peerDependencies": {
+    "bs-platform": "7.3"
   }
 }
