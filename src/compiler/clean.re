@@ -1,8 +1,9 @@
 open Module;
 
-let cleanFolder = () =>
+let cleanFolder = () => {
   Js.Promise.(
-    Fs_Extra.remove(normalize({j|cwd/dist|j}))
+    Fs_Extra.remove(normalize({j|$cwd/dist/|j}))
     |> then_(_ => resolve())
     |> catch(err => err |> Console.log |> resolve)
   );
+};
