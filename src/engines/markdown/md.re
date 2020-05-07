@@ -1,15 +1,18 @@
 open Module;
 
-[@bs.module] external remark: unit => Js.t('a) = "remark";
+[@bs.module] external unified: unit => Js.t('a) = "unified";
 [@bs.module] external guide: 'a = "remark-preset-lint-markdown-style-guide";
 [@bs.module] external html: 'a = "remark-html";
-[@bs.module] external report: Js.Promise.error => 'a = "vfile-reporter";
+[@bs.module] external markdown: 'a = "remark-parse";
+[@bs.module] external report: 'a => 'a = "vfile-reporter";
 
 let generate = (filepath: string) => {
   Js.Promise.(
-    remark()##use(guide)##use(html)##process(filepath)
-    |> then_(file => Console.log(file) |> resolve)
-    |> catch(err => report(err) |> resolve)
+    unified()##use(guide)##use(markdown)##use(html)##process(
+      Node.Fs.readFileSync(filepath, `utf8),
+    )
+    |> then_(file => report(file) |> resolve)
+    |> then_(err => Console.error(err) |> resolve)
   );
 };
 
