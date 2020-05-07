@@ -9,7 +9,7 @@ let run = () => {
     |> then_(_ =>
          [|getPages("src/pages/**/*.bs.js"), getPages("src/pages/**/*.md")|]
          |> all
-         |> then_(res => Console.log(res) |> resolve)
+         |> then_(res => [|Md.getMdFiles(res[1])|] |> all |> resolve)
          |> then_(_ => now() - time |> logMeasure |> resolve)
        )
   );
