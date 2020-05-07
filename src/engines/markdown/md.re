@@ -8,9 +8,11 @@ open Module;
 
 let generate = (filepath: string) => {
   Js.Promise.(
-    unified()##use(guide)##use(markdown)##use(html)##process(
-      Node.Fs.readFileSync(filepath, `utf8),
-    )
+    Fs_Extra.readFile(filepath, "utf8")
+    |> then_(file => resolve(file))
+    |> then_(file =>
+         unified()##use(guide)##use(markdown)##use(html)##process(file)
+       )
     |> then_(file => report(file) |> resolve)
     |> then_(err => Console.error(err) |> resolve)
   );

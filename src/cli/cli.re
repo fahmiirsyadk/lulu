@@ -1,8 +1,5 @@
 open Module;
 
-[@bs.module] external sade: string => 'a = "sade";
-[@bs.module] external colors: 'a = "kleur";
-
 let prog = sade("lulu")##version(0.1);
 
 if (Node.Process.argv[2] == "start") {
