@@ -318,7 +318,7 @@ property-information@^5.0.0:
   dependencies:
     xtend "^4.0.0"
 
-remark-html@^11.0.1:
+remark-html@11.0.1:
   version "11.0.1"
   resolved "https://registry.yarnpkg.com/remark-html/-/remark-html-11.0.1.tgz#fe12671be9dd67e75dd90dfb4d78c9d42f2e11ec"
   integrity sha512-bz7tSu9kDbaRNaiqQWrgXITkqJsZXoc2fjau+ms7WA4vflDoB+xMdY0QfNhUpGgmAv4SdDD1m+3BxWRHLizmiQ==
@@ -772,7 +772,7 @@ remark-message-control@^6.0.0:
     mdast-comment-marker "^1.0.0"
     unified-message-control "^3.0.0"
 
-remark-parse@^8.0.2:
+remark-parse@8.0.2:
   version "8.0.2"
   resolved "https://registry.yarnpkg.com/remark-parse/-/remark-parse-8.0.2.tgz#5999bc0b9c2e3edc038800a64ff103d0890b318b"
   integrity sha512-eMI6kMRjsAGpMXXBAywJwiwAse+KNpmt+BK55Oofy4KvBZEqUDj6mWbGLJZrujoPIPPxDXzn3T9baRlpsm2jnQ==
@@ -794,7 +794,7 @@ remark-parse@^8.0.2:
     vfile-location "^3.0.0"
     xtend "^4.0.1"
 
-remark-preset-lint-markdown-style-guide@^3.0.0:
+remark-preset-lint-markdown-style-guide@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/remark-preset-lint-markdown-style-guide/-/remark-preset-lint-markdown-style-guide-3.0.0.tgz#8077a441fc04078a5982700cfb74255fbb993c94"
   integrity sha512-f5Af/kYdPF+J4sfaHLlJ7rgMPDNp/jjTU+QUACnq0ge0QtZgxpDL2Nn40NKu7EhSx2dcvRxcaqqnLeb9VS++hQ==
@@ -954,7 +954,7 @@ unified-message-control@^3.0.0:
     unist-util-visit "^2.0.0"
     vfile-location "^3.0.0"
 
-unified@^9.0.0:
+unified@9.0.0:
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/unified/-/unified-9.0.0.tgz#12b099f97ee8b36792dbad13d278ee2f696eed1d"
   integrity sha512-ssFo33gljU3PdlWLjNp15Inqb77d6JnJSfyplGJPT/a+fNRNyCBeveBAYJdO5khKdF6WVHa/yYCC7Xl6BDwZUQ==
@@ -1030,7 +1030,7 @@ vfile-message@^2.0.0:
     "@types/unist" "^2.0.0"
     unist-util-stringify-position "^2.0.0"
 
-vfile-reporter@^6.0.1:
+vfile-reporter@6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/vfile-reporter/-/vfile-reporter-6.0.1.tgz#45d4dc11df2e312196ea2ceb95e42a67fc8ce814"
   integrity sha512-0OppK9mo8G2XUpv+hIKLVSDsoxJrXnOy73+vIm0jQUOUFYRduqpFHX+QqAQfvRHyX9B0UFiRuNJnBOjQCIsw1g==
