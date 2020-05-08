@@ -24,12 +24,15 @@ module Fs_Extra = {
   external outputFile: (string, string) => Js.Promise.t(unit) = "outputFile";
   [@bs.module "fs-extra"]
   external readFile: (string, string) => Js.Promise.t('a) = "readFile";
+  [@bs.module "fs-extra"]
+  external copy: (string, string) => Js.Promise.t(unit) = "copy";
 };
 
 let logMeasure = (result: int) =>
-  Console.log2(
-    colors##bold("time elapsed:"),
-    colors##bold()##green()##underline({j|$result miliseconds.|j}),
+  Console.log3(
+    colors##bold()##green(">>>"),
+    colors##bold("Finish building:"),
+    colors##bold()##green()##underline({j|$result mseconds|j}),
   );
 
 let getGlob = (pattern: string) =>

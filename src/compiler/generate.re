@@ -1,18 +1,18 @@
 open Module;
-open Default_template;
+module Fs = Fs_Extra;
+
+[@bs.val] external __dirname: string = "__dirname";
+let resolvePath = (path: string) => Node.Path.resolve(__dirname, path);
 
 let run = () => {
-  let tasks = [|
-    Fs_Extra.outputFile("src/pages/index.md", index()),
-    Fs_Extra.outputFile("src/templates/default.re", layout()),
-    Fs_Extra.outputFile("src/components/Header.re", ""),
-    Fs_Extra.outputFile({j|$cwd/lulu_config.re|j}, ""),
-  |];
-
   let _ = {
     let time = now();
     Js.Promise.(
-      tasks |> all |> then_(_ => now() - time |> logMeasure |> resolve)
+      Fs.copy(
+        normalize(resolvePath({j|../templates/pages|j})),
+        normalize({j|$cwd/src/pages|j}),
+      )
+      |> then_(_ => now() - time |> logMeasure |> resolve)
     );
   };
   ();
