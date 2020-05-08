@@ -12,11 +12,10 @@ let createMetadata = (path: string) => {
   path,
   distPath:
     path
-    |> Js.String.replace(Node.Path.basename(path), "index.html", _)
+    |> Js.String.replace(Node.Path.basename(path), "index.html")
     |> Js.String.replace(
          Node.Path.join([|"src", "pages"|]) |> normalize,
          Generate_folder.run(path),
-         _,
        ),
   ext: extname(path),
   filename: Generate_folder.run(path),
