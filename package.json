@@ -18,7 +18,7 @@
     "bs-platform": "7.3.2"
   },
   "dependencies": {
-    "fs-extra": "^9.0.0",
+    "fs-extra": "9.0.0",
     "glob": "7.1.6",
     "kleur": "3.0.3",
     "remark-html": "11.0.1",
@@ -27,7 +27,7 @@
     "sade": "1.7.3",
     "to-vfile": "6.1.0",
     "unified": "9.0.0",
-    "vfile-matter": "^1.0.2",
+    "vfile-matter": "1.0.2",
     "vfile-reporter": "6.0.1"
   },
   "peerDependencies": {}

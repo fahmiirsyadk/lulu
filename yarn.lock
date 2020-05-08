@@ -126,7 +126,7 @@ format@^0.2.0:
   resolved "https://registry.yarnpkg.com/format/-/format-0.2.2.tgz#d6170107e9efdc4ed30c9dc39016df942b5cb58b"
   integrity sha1-1hcBB+nv3E7TDJ3DkBbflCtctYs=
 
-fs-extra@^9.0.0:
+fs-extra@9.0.0:
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-9.0.0.tgz#b6afc31036e247b2466dc99c29ae797d5d4580a3"
   integrity sha512-pmEYSk3vYsG/bF651KPUXZ+hvjpgWYw/Gc7W9NFUe3ZVLczKKWIij3IKpOrQcdw4TILtibFslZ0UmR8Vvzig4g==
@@ -1109,7 +1109,7 @@ vfile-location@^3.0.0:
   resolved "https://registry.yarnpkg.com/vfile-location/-/vfile-location-3.0.1.tgz#d78677c3546de0f7cd977544c367266764d31bb3"
   integrity sha512-yYBO06eeN/Ki6Kh1QAkgzYpWT1d3Qln+ZCtSbJqFExPl1S3y2qqotJQXoh6qEvl/jDlgpUJolBn3PItVnnZRqQ==
 
-vfile-matter@^1.0.2:
+vfile-matter@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/vfile-matter/-/vfile-matter-1.0.2.tgz#d8af3bda3f29e9be181e177f82c8ec61569d83f6"
   integrity sha512-S9DNY1uJG1KVDPQu4bZoYia/icUp7wZ2YTwCWsh0JMGkdEMYKH8+8X14FNvOCjjwlWJGZz30llFkdj/kE3jx+w==
