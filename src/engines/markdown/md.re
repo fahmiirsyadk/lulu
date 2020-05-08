@@ -6,51 +6,30 @@ open Module;
 [@bs.module] external markdown: 'a = "remark-parse";
 [@bs.module] external report: 'a => 'a = "vfile-reporter";
 [@bs.module "to-vfile"] external read: string => Js.Promise.t('a) = "read";
-[@bs.module "path"] external extname: string => string = "extname";
 
 type file = {
   history: array(string),
   contents: string,
 };
 
-let generateFolder = (filename: string) => {
-  let filenoExtn = () =>
-    Js.String.replace(extname(filename), "", Node.Path.basename(filename));
-  Node.Path.join([|
-    cwd,
-    "dist",
-    filenoExtn() === "index" ? "" : filenoExtn(),
-  |])
-  |> normalize;
-};
-
-let logMd = (file: file): Js.Promise.t(unit) => {
-  Console.log(report(file));
-  let filename = file.history[1];
-  let folderTarget =
-    filename
-    |> Js.String.replace(Node.Path.basename(filename), "index.html", _)
-    |> Js.String.replace(
-         Node.Path.join([|"src", "pages"|]) |> normalize,
-         generateFolder(filename) |> normalize,
-         _,
-       );
-
-  Fs_Extra.outputFile(folderTarget, file.contents);
-};
-
-let generate = (filepath: string) => {
+let generate = (filepath: Generate_metadata.t) => {
   Js.Promise.(
-    read(filepath)
-    |> then_(file => resolve(file))
+    read(filepath.path)
     |> then_(file =>
          unified()##use(guide)##use(markdown)##use(html)##process(file)
        )
-    |> then_(file => logMd(file) |> resolve)
+    |> then_(file =>
+         {
+           Console.log(report(file));
+           file.contents;
+         }
+         |> resolve
+       )
+    |> then_(ctx => Fs_Extra.outputFile(filepath.distPath, ctx) |> resolve)
   );
 };
 
-let getMdFiles = (files: array(string)) => {
+let getMdFiles = (files: array(Generate_metadata.t)) => {
   Js.Promise.(
     Belt.Array.map(files, file => generate(file))
     |> all

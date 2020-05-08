@@ -9,6 +9,7 @@ external glob: (string, (Js.nullable(error), array(string)) => unit) => unit =
 external now: unit => int = "now";
 [@bs.module] external sade: string => 'a = "sade";
 [@bs.module] external colors: Js.t({..}) = "kleur";
+[@bs.module "path"] external extname: string => string = "extname";
 
 module Console = Js.Console;
 
