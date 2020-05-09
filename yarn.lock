@@ -379,10 +379,10 @@ property-information@^5.0.0:
   dependencies:
     xtend "^4.0.0"
 
-reason-nodejs@^12.0.3:
-  version "12.0.3"
-  resolved "https://registry.yarnpkg.com/reason-nodejs/-/reason-nodejs-12.0.3.tgz#17e8cd1a30eb255af6135d05f23bb1fbdc2d05eb"
-  integrity sha512-CG/r/TT5XlSAGoykhRvpecM/84Y9oT5xTK7J8rfEzGp+Ko2kdEMOyDZiS9ypAab/ZQjYt8r1yv1MHat2G5szfQ==
+reason-nodejs@^13.0.0-beta.0:
+  version "13.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/reason-nodejs/-/reason-nodejs-13.0.0-beta.0.tgz#2719c943af0ced632ab1c47f3071f9c94d01d580"
+  integrity sha512-xUCgfCHwTFkUq+EsLoGDySCJ9f+Qyt572E9OdWqvzHxCEOPDHgo1momIYcnbiEe+VHfPAKTnjfCZiZczaIZnPw==
 
 remark-frontmatter@^1.3.0:
   version "1.3.3"

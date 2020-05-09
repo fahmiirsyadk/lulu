@@ -1,3 +1,4 @@
+open NodeJs.Process;
 module Path = NodeJs.Path;
 
 let run = (filename: string) => {
@@ -8,7 +9,7 @@ let run = (filename: string) => {
       Node.Path.basename(filename),
     );
   Path.join([|
-    Node.Process.cwd(),
+    cwd(process),
     "dist",
     filenoExtn === "index" ? "" : filenoExtn,
   |])

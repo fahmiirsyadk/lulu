@@ -1,9 +1,11 @@
 open Module;
+open NodeJs.Process;
 module Path = NodeJs.Path;
 
 let cleanFolder = () => {
   Js.Promise.(
-    Path.join2(Node.Process.cwd(), "dist")
+    "dist"
+    |> Path.join2(cwd(process))
     |> Path.normalize
     |> Fs_Extra.remove
     |> then_(_ => resolve())
