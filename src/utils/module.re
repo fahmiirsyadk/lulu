@@ -1,11 +1,8 @@
 type error;
 
-[@bs.val] external require: string => Js.t('a) = "require";
 [@bs.module]
 external glob: (string, (Js.nullable(error), array(string)) => unit) => unit =
   "glob";
-[@bs.module "perf_hooks"] [@bs.scope "performance"]
-external now: unit => int = "now";
 [@bs.module] external sade: string => 'a = "sade";
 [@bs.module] external colors: Js.t({..}) = "kleur";
 
@@ -24,11 +21,13 @@ module Fs_Extra = {
   external copy: (string, string) => Js.Promise.t(unit) = "copy";
 };
 
-let logMeasure = (result: int) =>
+let logMeasure = (result: float) =>
   Console.log3(
     colors##bold()##green(">>>"),
     colors##bold("Finish building:"),
-    colors##bold()##green()##underline({j|$result mseconds|j}),
+    colors##bold()##green()##underline(
+      (result |> int_of_float |> string_of_int) ++ " msecond",
+    ),
   );
 
 let getGlob = (pattern: string) =>

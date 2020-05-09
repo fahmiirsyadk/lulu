@@ -12,7 +12,7 @@ let start = Js.Date.now();
 // TODO: eject data ?
 prog##command("eject")##describe("Copy out fallback files")##action(() => {
   Js.Promise.(
-    require("./eject.bs.js")
+    NodeJs.Global.require("./eject.bs.js")
     |> resolve
     |> then_(data => data##eject() |> resolve)
   )
