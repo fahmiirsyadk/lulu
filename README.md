@@ -10,7 +10,7 @@ Simple as F static site generator, create static site without breaking a sweet
 
 ## Usage
 
-![asciicast](https://asciinema.org/a/tYim0pYnrZ15vDNwuBE0ISQ9q.svg)
+[![asciicast](https://asciinema.org/a/tYim0pYnrZ15vDNwuBE0ISQ9q.svg)](https://asciinema.org/a/tYim0pYnrZ15vDNwuBE0ISQ9q)
 
 ### Init project
 
