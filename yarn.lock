@@ -379,7 +379,7 @@ property-information@^5.0.0:
   dependencies:
     xtend "^4.0.0"
 
-reason-nodejs@^13.0.0-beta.0:
+reason-nodejs@13.0.0-beta.0:
   version "13.0.0-beta.0"
   resolved "https://registry.yarnpkg.com/reason-nodejs/-/reason-nodejs-13.0.0-beta.0.tgz#2719c943af0ced632ab1c47f3071f9c94d01d580"
   integrity sha512-xUCgfCHwTFkUq+EsLoGDySCJ9f+Qyt572E9OdWqvzHxCEOPDHgo1momIYcnbiEe+VHfPAKTnjfCZiZczaIZnPw==
