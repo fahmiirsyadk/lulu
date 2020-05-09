@@ -1,10 +1,16 @@
 open Module;
+module Path = NodeJs.Path;
 
 let filename = "lulu_config.bs.js";
-let cwd = Node.Process.cwd();
 
 let getConfig = () => {
-  Js.Promise.(Fs_Extra.pathExists(normalize({j|$cwd/$filename|j})) |> resolve);
+  Js.Promise.(
+    filename
+    |> Path.join2(Node.Process.cwd())
+    |> Path.normalize
+    |> Fs_Extra.pathExists
+    |> resolve
+  );
 };
 
 getConfig();

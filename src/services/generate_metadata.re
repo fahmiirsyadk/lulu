@@ -1,4 +1,4 @@
-open Module;
+module Path = NodeJs.Path;
 
 type t = {
   path: string,
@@ -14,10 +14,10 @@ let createMetadata = (path: string) => {
     path
     |> Js.String.replace(Node.Path.basename(path), "index.html")
     |> Js.String.replace(
-         Node.Path.join([|"src", "pages"|]) |> normalize,
+         Path.join([|"src", "pages"|]) |> Path.normalize,
          Generate_folder.run(path),
        ),
-  ext: extname(path),
+  ext: Path.extname(path),
   filename: Generate_folder.run(path),
   basename: Node.Path.basename(path),
 };

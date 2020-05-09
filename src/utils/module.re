@@ -1,7 +1,6 @@
 type error;
 
 [@bs.val] external require: string => Js.t('a) = "require";
-[@bs.module "path"] external normalize: string => string = "normalize";
 [@bs.module]
 external glob: (string, (Js.nullable(error), array(string)) => unit) => unit =
   "glob";
@@ -9,11 +8,8 @@ external glob: (string, (Js.nullable(error), array(string)) => unit) => unit =
 external now: unit => int = "now";
 [@bs.module] external sade: string => 'a = "sade";
 [@bs.module] external colors: Js.t({..}) = "kleur";
-[@bs.module "path"] external extname: string => string = "extname";
 
 module Console = Js.Console;
-
-let cwd = Node.Process.cwd();
 
 module Fs_Extra = {
   [@bs.module "fs-extra"]

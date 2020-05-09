@@ -1,17 +1,18 @@
 open Module;
 module Fs = Fs_Extra;
+module Global = NodeJs.Global;
+module Path = NodeJs.Path;
 
-[@bs.val] external __dirname: string = "__dirname";
-let resolvePath = (path: string) => Node.Path.resolve(__dirname, path);
+let resolvePath = (path: string) => Path.resolve([|Global.dirname, path|]);
 
 let run = () => {
   let _ = {
     let time = now();
     Js.Promise.(
-      Fs.copy(
-        normalize(resolvePath({j|../templates/pages|j})),
-        normalize({j|$cwd/src/pages|j}),
-      )
+      [|Node.Process.cwd(), "src", "pages"|]
+      |> Path.join
+      |> Path.normalize
+      |> Fs.copy(resolvePath({j|../templates/pages|j}) |> Path.normalize)
       |> then_(_ => now() - time |> logMeasure |> resolve)
     );
   };
