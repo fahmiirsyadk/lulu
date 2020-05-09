@@ -26,7 +26,7 @@ let generate = (filepath: Generate_metadata.t) => {
        )
     |> then_(file =>
          {
-           Console.log(file.data);
+          //  Console.log(file.data);
            Console.log(report(file));
            file.contents;
          }

@@ -10,6 +10,8 @@ Simple as F static site generator, create static site without breaking a sweet
 
 ## Usage
 
+![asciicast](https://asciinema.org/a/tYim0pYnrZ15vDNwuBE0ISQ9q.svg)
+
 ### Init project
 
 - create your project folder
@@ -23,7 +25,7 @@ Simple as F static site generator, create static site without breaking a sweet
 
 ### Reason file
 
-```re
+```reason
 module S = Silica.HTML;
 module P = Silica.Property;
 

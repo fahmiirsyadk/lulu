@@ -26,7 +26,7 @@ let logMeasure = (result: float) =>
     colors##bold()##green(">>>"),
     colors##bold("Finish building:"),
     colors##bold()##green()##underline(
-      (result |> int_of_float |> string_of_int) ++ " msecond",
+      (result |> int_of_float |> string_of_int) ++ " mseconds",
     ),
   );
 
