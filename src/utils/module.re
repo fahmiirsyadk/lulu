@@ -3,8 +3,12 @@ type error;
 [@bs.module]
 external glob: (string, (Js.nullable(error), array(string)) => unit) => unit =
   "glob";
-[@bs.module] external sade: string => 'a = "sade";
-[@bs.module] external colors: Js.t({..}) = "kleur";
+
+type colorsUnit;
+[@bs.module] external colors: colorsUnit = "kleur";
+[@bs.send.pipe: colorsUnit] external bold: 'a => colorsUnit = "bold";
+[@bs.send.pipe: colorsUnit] external green: 'a => colorsUnit = "green";
+[@bs.send.pipe: colorsUnit] external underline: 'a => colorsUnit = "underline";
 
 module Console = Js.Console;
 
@@ -21,14 +25,14 @@ module Fs_Extra = {
   external copy: (string, string) => Js.Promise.t(unit) = "copy";
 };
 
-let logMeasure = (result: float) =>
+let logMeasure = (result: float): unit => {
+  let str = (result |> int_of_float |> string_of_int) ++ " mseconds";
   Console.log3(
-    colors##bold()##green(">>>"),
-    colors##bold("Finish building:"),
-    colors##bold()##green()##underline(
-      (result |> int_of_float |> string_of_int) ++ " mseconds",
-    ),
+    colors |> bold() |> green(">>>>"),
+    colors |> bold("finish building"),
+    colors |> bold() |> green() |> underline(str),
   );
+};
 
 let getGlob = (pattern: string) =>
   Js.Promise.make((~resolve, ~reject as _) => {

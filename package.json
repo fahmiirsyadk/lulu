@@ -15,9 +15,11 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "bs-platform": "7.3.2"
+    "bs-platform": ">= 7.3.2"
   },
   "dependencies": {
+    "@glennsl/bs-jest": "^0.5.1",
+    "chokidar": "^3.4.0",
     "fs-extra": "9.0.0",
     "glob": "7.1.6",
     "kleur": "3.0.3",
@@ -31,5 +33,7 @@
     "vfile-matter": "1.0.2",
     "vfile-reporter": "6.0.1"
   },
-  "peerDependencies": {}
+  "peerDependencies": {
+    "bs-platform": ">= 7.3.2"
+  }
 }

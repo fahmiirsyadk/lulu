@@ -1,18 +1,23 @@
 open Module;
-
-[@bs.module] external unified: unit => Js.t('a) = "unified";
-[@bs.module] external guide: 'a = "remark-preset-lint-markdown-style-guide";
-[@bs.module] external html: 'a = "remark-html";
-[@bs.module] external markdown: 'a = "remark-parse";
-[@bs.module] external report: 'a => 'a = "vfile-reporter";
-[@bs.module] external matter: (string, 'a) => 'a = "vfile-matter";
-[@bs.module "to-vfile"] external read: string => Js.Promise.t('a) = "read";
-
 type file = {
   history: array(string),
-  contents: string,
+  [@bs.as "contents"]
+  _contents: string,
   data: Js.t({.}),
 };
+
+type unifiedType;
+[@bs.module] external unified: unit => unifiedType = "unified";
+[@bs.send.pipe: unifiedType] external use: unifiedType => unifiedType = "use";
+[@bs.send.pipe: unifiedType]
+external process: Js.Promise.t('a) => file = "process";
+[@bs.module]
+external guide: unifiedType = "remark-preset-lint-markdown-style-guide";
+[@bs.module] external html: unifiedType = "remark-html";
+[@bs.module] external markdown: unifiedType = "remark-parse";
+[@bs.module] external report: 'a => 'a = "vfile-reporter";
+[@bs.module] external matter: (string, Js.t({..})) => 'a = "vfile-matter";
+[@bs.module "to-vfile"] external read: string => Js.Promise.t('a) = "read";
 
 let matterAsync = file =>
   Js.Promise.(matter(file, {"strip": true}) |> resolve);
@@ -22,13 +27,17 @@ let generate = (filepath: Generate_metadata.t) => {
     read(filepath.path)
     |> then_(file => matterAsync(file))
     |> then_(file =>
-         unified()##use(guide)##use(markdown)##use(html)##process(file)
+         unified()
+         |> use(guide)
+         |> use(markdown)
+         |> use(html)
+         |> process(file)
+         |> resolve
        )
     |> then_(file =>
          {
-          //  Console.log(file.data);
            Console.log(report(file));
-           file.contents;
+           file._contents;
          }
          |> resolve
        )
