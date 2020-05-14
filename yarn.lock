@@ -3056,10 +3056,10 @@ realpath-native@^2.0.0:
   resolved "https://registry.yarnpkg.com/realpath-native/-/realpath-native-2.0.0.tgz#7377ac429b6e1fd599dc38d08ed942d0d7beb866"
   integrity sha512-v1SEYUOXXdbBZK8ZuNgO4TBjamPsiSgcFr0aP+tEKpQZK8vooEUqV6nm6Cv502mX4NF2EfsnVqtNAHG+/6Ur1Q==
 
-reason-nodejs@13.0.0-beta.0:
-  version "13.0.0-beta.0"
-  resolved "https://registry.yarnpkg.com/reason-nodejs/-/reason-nodejs-13.0.0-beta.0.tgz#2719c943af0ced632ab1c47f3071f9c94d01d580"
-  integrity sha512-xUCgfCHwTFkUq+EsLoGDySCJ9f+Qyt572E9OdWqvzHxCEOPDHgo1momIYcnbiEe+VHfPAKTnjfCZiZczaIZnPw==
+reason-nodejs@13.0.0-dev.3:
+  version "13.0.0-dev.3"
+  resolved "https://registry.yarnpkg.com/reason-nodejs/-/reason-nodejs-13.0.0-dev.3.tgz#b3f1283d01c0ba08c4c9699c78232da332b22b32"
+  integrity sha512-eR8moFbD27JWY3WluPLCdqiICWMCtZlFwsU1J7u3Kz6sbx4wXqnIlcpno4bUv/oYJEBr6NPFYHNotEW/KerIYw==
 
 regex-not@^1.0.0, regex-not@^1.0.2:
   version "1.0.2"
