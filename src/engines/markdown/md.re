@@ -13,9 +13,12 @@ type unifiedType;
 external process: Js.Promise.t('a) => file = "process";
 [@bs.module]
 external guide: unifiedType = "remark-preset-lint-markdown-style-guide";
-[@bs.module] external html: unifiedType = "remark-html";
+[@bs.module] external html: unifiedType = "rehype-stringify";
 [@bs.module] external markdown: unifiedType = "remark-parse";
 [@bs.module] external report: 'a => 'a = "vfile-reporter";
+[@bs.module] external format: unifiedType = "rehype-format";
+[@bs.module] external doc: unifiedType = "rehype-document";
+[@bs.module] external remark2hype: unifiedType = "remark-rehype";
 [@bs.module] external matter: (string, Js.t({..})) => 'a = "vfile-matter";
 [@bs.module "to-vfile"] external read: string => Js.Promise.t('a) = "read";
 
@@ -28,8 +31,11 @@ let generate = (filepath: Generate_metadata.t) => {
     |> then_(file => matterAsync(file))
     |> then_(file =>
          unified()
-         |> use(guide)
          |> use(markdown)
+         |> use(guide)
+         |> use(remark2hype)
+         |> use(doc)
+         |> use(format)
          |> use(html)
          |> process(file)
          |> resolve
