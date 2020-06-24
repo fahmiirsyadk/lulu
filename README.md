@@ -10,6 +10,7 @@ Simple static site generator built with reason & javascript
 
 ## Note
 > this project is my experimental project to help me learn more about reasonml
+
 > not available as npm package, yet.
 
 ## Usage
