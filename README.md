@@ -5,8 +5,13 @@
 <h1 align="center">✨Lulu ✨</h1>
 
 <p align="center">
-Simple as F static site generator, create static site without breaking a sweet
+Simple static site generator built with reason & javascript
 </p>
+
+## Note
+> this project is my experimental project to help me learn more about reasonml
+
+> not available as npm package, yet.
 
 ## Usage
 
