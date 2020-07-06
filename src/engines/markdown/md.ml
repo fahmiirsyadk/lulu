@@ -2,7 +2,7 @@ open Module
 
 type file = {
   history : string array;
-  _contents : string; [@bs.as ("contents" [@reason.raw_literal "contents"])]
+  _contents : string; [@bs.as "contents"]
   data : < > Js.t;
 }
 
@@ -32,8 +32,7 @@ external remark2hype : unifiedType = "remark-rehype" [@@bs.module]
 
 external matter : string -> < .. > Js.t -> 'a = "vfile-matter" [@@bs.module]
 
-external read : string -> 'a Js.Promise.t = "read"
-  [@@bs.module ("to-vfile" [@reason.raw_literal "to-vfile"])]
+external read : string -> 'a Js.Promise.t = "read" [@@bs.module "to-vfile"]
 
 let matterAsync file =
   let open Js.Promise in
