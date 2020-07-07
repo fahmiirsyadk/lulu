@@ -23,6 +23,7 @@
     "fs-extra": "9.0.1",
     "glob": "7.1.6",
     "kleur": "4.0.2",
+    "mustache": "^4.0.1",
     "reason-nodejs": "13.0.0-dev.3",
     "rehype-document": "5.1.0",
     "rehype-format": "3.1.0",
@@ -35,7 +36,7 @@
     "to-vfile": "6.1.0",
     "unified": "9.0.0",
     "vfile-matter": "1.0.2",
-    "vfile-reporter-pretty": "^5.0.0"
+    "vfile-reporter": "^6.0.1"
   },
   "peerDependencies": {
     "bs-platform": ">= 7.3.2"

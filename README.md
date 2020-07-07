@@ -5,18 +5,18 @@
 <h1 align="center">✨Lulu ✨</h1>
 
 <p align="center">
-Simple static site generator built with reason & javascript
+Simple static site generator built with bucklescript & ocaml syntax
 </p>
 
 ## Note
 
-> this project is my experimental project to help me learn more about reasonml
+> this project is my experimental project to help me learn more about reasonml & ocaml
+
+> 🚧 highly under development 🚧
 
 > not available as npm package, yet.
 
 ## Usage
-
-[![asciicast](https://asciinema.org/a/tYim0pYnrZ15vDNwuBE0ISQ9q.svg)](https://asciinema.org/a/tYim0pYnrZ15vDNwuBE0ISQ9q)
 
 ### Init project
 
