@@ -22,7 +22,7 @@ external html : unifiedType = "rehype-stringify" [@@bs.module]
 
 external markdown : unifiedType = "remark-parse" [@@bs.module]
 
-external report : 'a -> 'a = "vfile-reporter" [@@bs.module]
+external report : 'a array -> 'a = "vfile-reporter-pretty" [@@bs.module]
 
 external format : unifiedType = "rehype-format" [@@bs.module]
 
@@ -46,7 +46,7 @@ let generate (filepath : Generate_metadata.t) =
          unified () |> use markdown |> use guide |> use remark2hype |> use doc
          |> use format |> use html |> process file |> resolve)
   |> then_ (fun file ->
-         ( Console.log (report file);
+         ( Console.error (report [| file |]);
            file._contents )
          |> resolve)
   |> then_ (fun ctx -> Fs_Extra.outputFile filepath.distPath ctx |> resolve)
