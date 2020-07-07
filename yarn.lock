@@ -4614,7 +4614,7 @@ vfile-message@^2.0.0:
     "@types/unist" "^2.0.0"
     unist-util-stringify-position "^2.0.0"
 
-vfile-reporter-pretty@^5.0.0:
+vfile-reporter-pretty@5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/vfile-reporter-pretty/-/vfile-reporter-pretty-5.0.0.tgz#7624a20a6c0fabae666c4d51c150b94f19601c00"
   integrity sha512-pynx5Xvqp6TArfaP6T1JcyZK45Z7iQH6mv4XV7ce0Kry9t15zWaoZqFQvs9PNvivgxm7PFKzZV/l88VswW8Upw==

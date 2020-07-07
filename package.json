@@ -35,7 +35,7 @@
     "to-vfile": "6.1.0",
     "unified": "9.0.0",
     "vfile-matter": "1.0.2",
-    "vfile-reporter-pretty": "^5.0.0"
+    "vfile-reporter-pretty": "5.0.0"
   },
   "peerDependencies": {
     "bs-platform": ">= 7.3.2"
