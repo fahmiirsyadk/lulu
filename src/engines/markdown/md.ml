@@ -2,7 +2,9 @@ open Module
 
 type unifiedType
 
-type data = { matter : < > Js.t }
+type matter = { template : string option }
+
+type data = { matter : matter }
 
 type t = {
   history : string array;
