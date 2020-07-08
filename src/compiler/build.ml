@@ -11,5 +11,5 @@ let run () =
          getPages "src/pages/**/*.md"
          |> then_ (fun res -> res |> resolve)
          |> then_ (fun res -> Generate_metadata.run res |> resolve)
-         |> then_ (fun res -> Md.getMdFiles res |> resolve)
+         |> then_ (fun res -> Generate_pages.run res |> resolve)
          |> then_ (fun _ -> now performance -. time |> logMeasure |> resolve))

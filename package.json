@@ -27,6 +27,7 @@
     "reason-nodejs": "13.0.0-dev.3",
     "rehype-document": "5.1.0",
     "rehype-format": "3.1.0",
+    "rehype-parse": "^7.0.1",
     "rehype-stringify": "8.0.0",
     "remark-html": "11.0.2",
     "remark-parse": "8.0.2",
