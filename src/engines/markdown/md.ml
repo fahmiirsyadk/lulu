@@ -2,10 +2,12 @@ open Module
 
 type unifiedType
 
+type data = { matter : < > Js.t }
+
 type t = {
   history : string array;
   children : string; [@bs.as "contents"]
-  data : < > Js.t;
+  data : data;
 }
 
 external unified : unit -> unifiedType = "unified" [@@bs.module]
