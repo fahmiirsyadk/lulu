@@ -1,24 +1,13 @@
 module Path = NodeJs.Path
 
-type t = {
-  path : string;
-  distPath : string;
-  ext : string;
-  filename : string;
-  basename : string;
-}
+type t = { path : string; distPath : string; ext : string; basename : string }
 
 let createMetadata (path : string) =
   {
     path;
-    distPath =
-      path
-      |> Js.String.replace (Node.Path.basename path) "index.html"
-      |> Js.String.replace
-           (Path.join [| "src"; "pages" |] |> Path.normalize)
-           (Generate_folder.run path);
     ext = Path.extname path;
-    filename = Generate_folder.run path;
+    distPath =
+      "index.html" |> Path.join2 (Generate_folder.run path) |> Path.normalize;
     basename = Node.Path.basename path;
   }
 
