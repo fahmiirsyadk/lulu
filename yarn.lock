@@ -2464,6 +2464,14 @@ js-yaml@^3.0.0, js-yaml@^3.13.1:
     argparse "^1.0.7"
     esprima "^4.0.0"
 
+js-yaml@^3.14.0:
+  version "3.14.0"
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.14.0.tgz#a7a34170f26a21bb162424d8adacb4113a69e482"
+  integrity sha512-/4IbIeHcD9VMHFqDR/gQ7EdZdLimOvW2DdcxFjdyyZ9NsbS+ccrXqVWDtab/lRl5AlUqmpBx8EhPaWR+OtY17A==
+  dependencies:
+    argparse "^1.0.7"
+    esprima "^4.0.0"
+
 jsbn@~0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
@@ -2603,6 +2611,11 @@ lines-and-columns@^1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
+
+liquidjs@^9.14.1:
+  version "9.14.1"
+  resolved "https://registry.yarnpkg.com/liquidjs/-/liquidjs-9.14.1.tgz#9dd7cee686a7609aa051adb84913a088420e9838"
+  integrity sha512-5WYoIggCjGhOld1fZSIbA21AwxgQGcHv5UbzbiyJ9/EY8fhkaW8jQHVpfJ7gFHo4CtgZC4bRRd2QKTPjfT5cRg==
 
 locate-path@^5.0.0:
   version "5.0.0"

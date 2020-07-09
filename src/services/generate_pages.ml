@@ -15,13 +15,12 @@ let createPages template =
   | true ->
       Fs_Extra.readFile template.page "utf-8"
       |> then_ (fun res ->
-             Mustache.compile res
+             Liquid.compile res
                [%bs.obj
                  {
                    matter = template.content.data.matter;
                    children = template.content.children;
-                 }]
-             |> resolve)
+                 }])
       |> then_ (fun res -> Fs_Extra.outputFile template.meta.distPath res)
   | false -> () |> resolve
 
