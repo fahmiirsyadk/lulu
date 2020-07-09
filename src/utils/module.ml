@@ -23,6 +23,8 @@ module Fs_Extra = struct
   external remove : string -> unit Js.Promise.t = "remove"
     [@@bs.module "fs-extra"]
 
+  external removeSync : string -> unit = "removeSync" [@@bs.module "fs-extra"]
+
   external outputFile : string -> string -> unit Js.Promise.t = "outputFile"
     [@@bs.module "fs-extra"]
 
@@ -30,6 +32,12 @@ module Fs_Extra = struct
     [@@bs.module "fs-extra"]
 
   external copy : string -> string -> unit Js.Promise.t = "copy"
+    [@@bs.module "fs-extra"]
+
+  external ensureDir : string -> unit Js.Promise.t = "ensureDir"
+    [@@bs.module "fs-extra"]
+
+  external copySync : string -> string -> unit = "copySync"
     [@@bs.module "fs-extra"]
 end
 

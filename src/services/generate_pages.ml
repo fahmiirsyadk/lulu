@@ -1,4 +1,6 @@
 open Module
+open NodeJs.Process
+module Path = NodeJs.Path
 
 let getPages (pattern : string) = getGlob pattern
 
@@ -38,16 +40,18 @@ let selectTemplate (pages : string array) (meta : Generate_metadata.t)
       createPages templateRes)
   |> resolve
 
-let compileTemplate (content : Md.t) (metadata : Generate_metadata.t) =
+let compilePages pages =
   let open Js.Promise in
-  getPages "src/templates/*.html"
-  |> then_ (fun pages -> selectTemplate pages metadata content |> resolve)
+  Fs_Extra.ensureDir ([| cwd process; "dist" |] |> Path.join |> Path.normalize)
+  |> then_ (fun _ -> getPages "src/templates/*.html")
+  |> then_ (fun templatePages -> templatePages |> resolve)
+  |> then_ (fun x ->
+         Belt.Array.map pages (fun page ->
+             let content, meta = page in
+             selectTemplate x meta content)
+         |> all)
+  |> then_ (fun _ -> Console.log "compile rampung" |> resolve)
 
 let run pages =
   let open Js.Promise in
-  Md.getMdFiles pages
-  |> then_ (fun x ->
-         Belt.Array.map x (fun partial ->
-             let content, meta = partial in
-             compileTemplate content meta)
-         |> resolve)
+  Md.getMdFiles pages |> then_ (fun x -> compilePages x)
