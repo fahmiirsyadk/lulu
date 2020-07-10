@@ -10,6 +10,8 @@ external colors : colorsUnit = "kleur" [@@bs.module]
 
 external bold : 'a -> colorsUnit = "bold" [@@bs.send.pipe: colorsUnit]
 
+external red : 'a -> colorsUnit = "red" [@@bs.send.pipe: colorsUnit]
+
 external green : 'a -> colorsUnit = "green" [@@bs.send.pipe: colorsUnit]
 
 external underline : 'a -> colorsUnit = "underline" [@@bs.send.pipe: colorsUnit]
@@ -52,3 +54,10 @@ let logMeasure (result : float) =
 let getGlob (pattern : string) =
   Js.Promise.make (fun ~resolve ~reject:_ ->
       glob pattern (fun _ file -> (resolve file [@bs])))
+
+let errorBanner banner err =
+  Console.log2
+    ( colors |> bold ()
+    |> red (">>>" ^ {j| 😱 |j} ^ banner ^ " with message: \n") )
+    err;
+  Console.log (colors |> bold () |> red ">>>> End line of error message \n")

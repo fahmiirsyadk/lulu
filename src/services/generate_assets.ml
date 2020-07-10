@@ -11,5 +11,8 @@ let copyAssets =
     [| cwd process; "dist"; "assets" |] |> Path.join |> Path.normalize
   in
   let open Js.Promise in
-  Fs_Extra.copy origin destination
-  |> catch (fun err -> err |> Console.log |> resolve)
+  Fs_Extra.pathExists origin
+  |> then_ (fun res ->
+         if res then Fs_Extra.copy origin destination else () |> resolve)
+  |> catch (fun err ->
+         errorBanner "Error when trying to copy assets" err |> resolve)
