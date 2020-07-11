@@ -1,9 +1,19 @@
+open Module
+
 type yamlType
 
 external yaml : yamlType = "js-yaml" [@@bs.module]
 
-external safeLoad : 'a -> yamlType = "safeLoad" [@@bs.send.pipe: yamlType]
+external safeLoad : 'a -> 'b option = "safeLoad" [@@bs.send.pipe: yamlType]
 
-let getConfig = yaml |> safeLoad (Node.Fs.readFileSync "lulu.config.yml" `utf8)
-
-let () = Js.log getConfig
+let getConfig =
+  let open Js.Promise in
+  Fs_Extra.pathExists "lulu.config.yml"
+  |> then_ (fun res ->
+         if res then
+           Module.Fs_Extra.readFile "lulu.config.yml" "utf-8"
+           |> then_ (fun file -> yaml |> safeLoad file |> resolve)
+         else None |> resolve)
+  |> catch (fun err ->
+         errorBanner "Error when trying to get config" err;
+         None |> resolve)

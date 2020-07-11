@@ -38,16 +38,41 @@ let matterAsync file =
   let open Js.Promise in
   matter file [%bs.obj { strip = true }] |> resolve
 
+let compileMd file =
+  unified () |> use markdown |> use guide |> use remark2hype |> use html
+  |> process file
+
+let compileMdNoLinter file =
+  unified () |> use markdown |> use remark2hype |> use html |> process file
+
+let processMd data file =
+  match data with
+  | Some data ->
+      if data##lulu##markdown##linter then compileMd file
+      else compileMdNoLinter file
+  | None ->
+      unified () |> use markdown |> use guide |> use remark2hype |> use html
+      |> process file
+
 let parse (filepath : Generate_metadata.t) =
   let open Js.Promise in
   read filepath.path
   |> then_ (fun file -> matterAsync file)
   |> then_ (fun file ->
-         unified () |> use markdown |> use guide |> use remark2hype |> use html
-         |> process file |> resolve)
+         Configure_config.getConfig
+         |> then_ (fun config -> (config, file) |> resolve))
+  |> then_ (fun data ->
+         let config, file = data in
+         processMd config file |> resolve)
   |> then_ (fun file ->
-         Console.error (report file);
-         (file, filepath) |> resolve)
+         Configure_config.getConfig
+         |> then_ (fun config ->
+                match config with
+                | Some data ->
+                    if data##lulu##silent then () |> resolve
+                    else Console.log (report file) |> resolve
+                | None -> Console.log (report file) |> resolve)
+         |> then_ (fun _ -> (file, filepath) |> resolve))
 
 let getMdFiles (files : Generate_metadata.t array) =
   let open Js.Promise in

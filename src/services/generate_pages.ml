@@ -28,8 +28,15 @@ let getDefaultTemplate =
 
 let createPages (meta : Generate_metadata.t) page (content : Md.t) =
   let open Js.Promise in
-  Liquid.compile page
-    [%bs.obj { matter = content.data.matter; children = content.children }]
+  Configure_config.getConfig
+  |> then_ (fun res ->
+         Liquid.compile page
+           [%bs.obj
+             {
+               matter = content.data.matter;
+               children = content.children;
+               site = res;
+             }])
   |> then_ (fun res -> Fs_Extra.outputFile meta.distPath res)
   |> catch (fun err ->
          errorBanner "Error when trying to create page" err |> resolve)
