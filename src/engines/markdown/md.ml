@@ -48,7 +48,7 @@ let compileMdNoLinter file =
 let processMd data file =
   match data with
   | Some data ->
-      if data##lulu##markdown##linter then compileMd file
+      if data##lulu##markdown##linter || data##lulu##silent then compileMd file
       else compileMdNoLinter file
   | None ->
       unified () |> use markdown |> use guide |> use remark2hype |> use html
