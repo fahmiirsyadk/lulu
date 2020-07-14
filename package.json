@@ -20,8 +20,8 @@
   },
   "dependencies": {
     "chokidar": "3.4.0",
+    "fast-glob": "^3.2.4",
     "fs-extra": "9.0.1",
-    "glob": "7.1.6",
     "js-yaml": "3.14.0",
     "kleur": "4.0.2",
     "liquidjs": "9.14.1",

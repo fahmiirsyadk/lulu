@@ -1,36 +1,11 @@
 open Module
-open NodeJs.Process
-module Path = NodeJs.Path
+open NodeJs
 
-let getPages (pattern : string) = getGlob pattern
-
-type dataTemplate = {
-  status : bool;
-  meta : Generate_metadata.t;
-  page : string;
-  content : Md.t;
-}
-
-let getDefaultTemplate =
-  {j|
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ matter.title }}</title>
-</head>
-<body>
-  {{ children }}
-</body>
-</html>
-|j}
-
-let createPages (meta : Generate_metadata.t) page (content : Md.t) =
+let createPages (meta : Generate_metadata.t) template (content : Md.t) =
   let open Js.Promise in
   Configure_config.getConfig
   |> then_ (fun res ->
-         Liquid.compile page
+         Liquid.compile template
            [%bs.obj
              {
                matter = content.data.matter;
@@ -41,32 +16,25 @@ let createPages (meta : Generate_metadata.t) page (content : Md.t) =
   |> catch (fun err ->
          errorBanner "Error when trying to create page" err |> resolve)
 
-let selectTemplate (pages : string array) (meta : Generate_metadata.t)
-    (content : Md.t) =
+let selectTemplate (data : (Md.t * Generate_metadata.t) array) =
   let open Js.Promise in
-  Belt.Array.map pages (fun page ->
-      let pageFilter = Node.Path.basename page in
-      let templateName = function None -> "default" | Some x -> x in
-      match
-        pageFilter = templateName content.data.matter.template ^ ".html"
-      with
-      | true ->
-          Fs_Extra.readFile page "utf-8"
-          |> then_ (fun res -> createPages meta res content)
-      | false -> createPages meta getDefaultTemplate content)
+  Belt.Array.map data (fun ctx ->
+      let md, meta = ctx in
+      Belt.Array.map meta.templates (fun template ->
+          let basenameTemplate = Path.basenameExt template ".html" in
+          let templateMatter = function None -> "default" | Some x -> x in
+          match basenameTemplate = templateMatter md.data.matter.template with
+          | true ->
+              Fs_Extra.readFile template "utf-8"
+              |> then_ (fun res -> createPages meta res md)
+          | false -> createPages meta Default_template.get md))
 
-let compilePages pages =
+let run (data : Generate_metadata.t array) =
   let open Js.Promise in
-  Fs_Extra.ensureDir ([| cwd process; "dist" |] |> Path.join |> Path.normalize)
-  |> then_ (fun _ -> getPages "templates/*.html")
-  |> then_ (fun x ->
-         Belt.Array.map pages (fun page ->
-             let content, meta = page in
-             selectTemplate x meta content |> resolve)
-         |> all)
-
-let run pages =
-  let open Js.Promise in
-  Md.getMdFiles pages
-  |> then_ (fun x -> compilePages x)
+  Md.getMdFiles data
+  |> then_ (fun res -> selectTemplate res |> resolve)
   |> then_ (fun _ -> resolve ())
+
+let location =
+  [| Process.cwd Process.process; "pages"; "**"; "*.md" |]
+  |> Path.join |> Path.normalize

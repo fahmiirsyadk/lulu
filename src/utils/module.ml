@@ -18,6 +18,9 @@ external underline : 'a -> colorsUnit = "underline" [@@bs.send.pipe: colorsUnit]
 
 module Console = Js.Console
 
+external fsGlob : string array -> string array Js.Promise.t = "fast-glob"
+  [@@bs.module]
+
 module Fs_Extra = struct
   external pathExists : string -> bool Js.Promise.t = "pathExists"
     [@@bs.module "fs-extra"]
@@ -39,6 +42,9 @@ module Fs_Extra = struct
   external ensureDir : string -> unit Js.Promise.t = "ensureDir"
     [@@bs.module "fs-extra"]
 
+  external ensureFile : string -> unit Js.Promise.t = "ensureDir"
+    [@@bs.module "fs-extra"]
+
   external copySync : string -> string -> unit = "copySync"
     [@@bs.module "fs-extra"]
 end
@@ -50,10 +56,6 @@ let logMeasure (result : float) =
       (colors |> bold "finish building")
       (colors |> bold () |> green () |> underline str)
     : unit )
-
-let getGlob (pattern : string) =
-  Js.Promise.make (fun ~resolve ~reject:_ ->
-      glob pattern (fun _ file -> (resolve file [@bs])))
 
 let errorBanner banner err =
   Console.log2
