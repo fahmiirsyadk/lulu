@@ -1,9 +1,8 @@
 open Module
-open NodeJs.PerfHooks.Performance
 
 let run () =
+  Js.Console.timeStart "Build time";
   let open Js.Promise in
-  let time = now performance in
   Clean.cleanFolder |> resolve
   |> then_ (fun _ ->
          [|
@@ -14,4 +13,4 @@ let run () =
   |> then_ (fun res -> Generate_metadata.run res.(0) res.(1) |> resolve)
   |> then_ (fun res ->
          [| Generate_pages.run res; Generate_assets.copyAssets |] |> all)
-  |> then_ (fun _ -> time |> logMeasure |> resolve)
+  |> then_ (fun _ -> Js.Console.timeEnd "Build time" |> resolve)
