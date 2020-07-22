@@ -31,7 +31,7 @@
     "rehype-parse": "7.0.1",
     "rehype-stringify": "8.0.0",
     "remark-html": "11.0.2",
-    "remark-parse": "8.0.2",
+    "remark-parse": "8.0.3",
     "remark-preset-lint-markdown-style-guide": "3.0.1",
     "remark-rehype": "7.0.0",
     "sade": "1.7.3",
