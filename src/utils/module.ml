@@ -45,6 +45,9 @@ module Fs_Extra = struct
   external ensureFile : string -> unit Js.Promise.t = "ensureDir"
     [@@bs.module "fs-extra"]
 
+  external outputFileSync : string -> string -> unit = "outputFileSync"
+    [@@bs.module "fs-extra"]
+
   external copySync : string -> string -> unit = "copySync"
     [@@bs.module "fs-extra"]
 end
