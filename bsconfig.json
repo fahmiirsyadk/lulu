@@ -1,17 +1,13 @@
 {
   "name": "lulu",
   "version": "0.0.1",
-  "sources": [
-    {
-      "dir": "src",
-      "subdirs": true
-    },
-    {
-      "dir": "__tests__",
-      "subdirs": true,
-      "type": "dev"
-    }
-  ],
+  "sources": [{
+    "dir": "src",
+    "subdirs": true
+  }, {
+    "dir": "bin",
+    "subdirs": true
+  }],
   "package-specs": {
     "module": "commonjs",
     "in-source": true

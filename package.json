@@ -11,13 +11,17 @@
   ],
   "author": "",
   "bin": {
-    "lulu": "./src/cli/lulu"
+    "lulu": "./bin/lulu"
   },
   "license": "MIT",
   "devDependencies": {
     "@glennsl/bs-jest": "0.5.1",
     "bs-platform": "8.0.3"
   },
+  "files": [
+    "src/**/*.bs.js",
+    "bin/"
+  ],
   "dependencies": {
     "chokidar": "3.4.1",
     "fast-glob": "3.2.4",
@@ -25,6 +29,7 @@
     "js-yaml": "3.14.0",
     "kleur": "4.0.2",
     "liquidjs": "9.14.1",
+    "lulu": "file:.yalc/lulu",
     "reason-nodejs": "13.0.0-dev.3",
     "rehype-document": "5.1.0",
     "rehype-format": "3.1.0",
@@ -39,8 +44,5 @@
     "unified": "9.0.0",
     "vfile-matter": "1.0.2",
     "vfile-reporter": "6.0.1"
-  },
-  "peerDependencies": {
-    "bs-platform": ">= 7.3.2"
   }
 }
