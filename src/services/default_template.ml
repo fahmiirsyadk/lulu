@@ -1,4 +1,10 @@
-let get =
+let getMd = {|---
+title: My first page
+---
+
+# Hello world
+|}
+let getHtml =
   {j|
 <!DOCTYPE html>
 <html lang="en">

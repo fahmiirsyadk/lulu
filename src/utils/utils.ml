@@ -14,6 +14,8 @@ external red : 'a -> colorsUnit = "red" [@@bs.send.pipe: colorsUnit]
 
 external green : 'a -> colorsUnit = "green" [@@bs.send.pipe: colorsUnit]
 
+external yellow : 'a -> colorsUnit = "yellow" [@@bs.send.pipe: colorsUnit]
+
 external underline : 'a -> colorsUnit = "underline" [@@bs.send.pipe: colorsUnit]
 
 module Console = Js.Console
@@ -60,9 +62,16 @@ let logMeasure (result : float) =
       (colors |> bold () |> green () |> underline str)
     : unit )
 
+let warnBanner banner err = 
+  Console.log2
+    ( colors |> bold ()
+    |> yellow (">>> " ^ banner ^ " with message: \n") )
+    err;
+  Console.log (colors |> bold () |> yellow ">>> End line of warn message \n")
+
 let errorBanner banner err =
   Console.log2
     ( colors |> bold ()
     |> red (">>>" ^ {j| 😱 |j} ^ banner ^ " with message: \n") )
     err;
-  Console.log (colors |> bold () |> red ">>>> End line of error message \n")
+  Console.log (colors |> bold () |> red ">>> End line of error message \n")

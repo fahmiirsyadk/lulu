@@ -1,4 +1,4 @@
-open Module
+open Utils
 open NodeJs
 
 let createPages (meta : Generate_metadata.t) template (content : Md.t) =
@@ -21,13 +21,8 @@ let selectTemplate (data : (Md.t * Generate_metadata.t) array) =
   Belt.Array.map data (fun ctx ->
       let md, meta = ctx in
       Belt.Array.map meta.templates (fun template ->
-          let basenameTemplate = Path.basenameExt template ".html" in
-          let templateMatter = function None -> "default" | Some x -> x in
-          match basenameTemplate = templateMatter md.data.matter.template with
-          | true ->
-              Fs_Extra.readFile template "utf-8"
-              |> then_ (fun res -> createPages meta res md)
-          | false -> createPages meta Default_template.get md))
+          Fs_Extra.readFile template "utf-8"
+          |> then_ (fun res -> createPages meta res md)))
 
 let run (data : Generate_metadata.t array) =
   let open Js.Promise in

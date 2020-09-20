@@ -1,4 +1,4 @@
-open Module
+open Utils
 open Yaml
 
 let getConfig =
@@ -6,7 +6,7 @@ let getConfig =
   Fs_Extra.pathExists "lulu.config.yml"
   |> then_ (fun res ->
          if res then
-           Module.Fs_Extra.readFile "lulu.config.yml" "utf-8"
+          Fs_Extra.readFile "lulu.config.yml" "utf-8"
            |> then_ (fun file -> yaml |> safeLoad file |> resolve)
          else None |> resolve)
   |> catch (fun err ->

@@ -29,7 +29,6 @@
     "js-yaml": "3.14.0",
     "kleur": "4.1.1",
     "liquidjs": "9.14.1",
-    "lulu": "file:.yalc/lulu",
     "reason-nodejs": "13.0.0-dev.3",
     "rehype-document": "5.1.0",
     "rehype-format": "3.1.0",

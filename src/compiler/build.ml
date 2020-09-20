@@ -1,4 +1,4 @@
-open Module
+open Utils
 
 let run () =
   Js.Console.timeStart "Build time";
