@@ -1,4 +1,4 @@
-open Utils
+(* open Utils *)
 
 type unifiedType
 
@@ -47,12 +47,11 @@ let compileMdNoLinter file =
 
 let processMd data file =
   match data with
-  | Some data ->
-      if data##lulu##markdown##linter || data##lulu##silent then compileMd file
-      else compileMdNoLinter file
-  | None ->
-      unified () |> use markdown |> use guide |> use remark2hype |> use html
-      |> process file
+  | Some data -> (
+      match data##lulu##markdownLinter |> Js.isNullable with
+      | true -> compileMdNoLinter file
+      | false -> compileMd file )
+  | None -> compileMd file
 
 let parse (filepath : Generate_metadata.t) =
   let open Js.Promise in
@@ -64,15 +63,7 @@ let parse (filepath : Generate_metadata.t) =
   |> then_ (fun data ->
          let config, file = data in
          processMd config file |> resolve)
-  |> then_ (fun file ->
-         Configure_config.getConfig
-         |> then_ (fun config ->
-                match config with
-                | Some data ->
-                    if data##lulu##silent then () |> resolve
-                    else Console.log (report file) |> resolve
-                | None -> Console.log (report file) |> resolve)
-         |> then_ (fun _ -> (file, filepath) |> resolve))
+  |> then_ (fun file -> (file, filepath) |> resolve)
 
 let getMdFiles (files : Generate_metadata.t array) =
   let open Js.Promise in
