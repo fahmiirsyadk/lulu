@@ -2652,10 +2652,10 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
-liquidjs@9.14.1:
-  version "9.14.1"
-  resolved "https://registry.yarnpkg.com/liquidjs/-/liquidjs-9.14.1.tgz#9dd7cee686a7609aa051adb84913a088420e9838"
-  integrity sha512-5WYoIggCjGhOld1fZSIbA21AwxgQGcHv5UbzbiyJ9/EY8fhkaW8jQHVpfJ7gFHo4CtgZC4bRRd2QKTPjfT5cRg==
+liquidjs@9.25.0:
+  version "9.25.0"
+  resolved "https://registry.yarnpkg.com/liquidjs/-/liquidjs-9.25.0.tgz#6975764b74827c81bc1363b5ca4e9bc1140b7bb6"
+  integrity sha512-TIccrphsWN53fVF9G/wDaKD1cHaB097ULLf+FzxxqN2iyJjzp/Oe9xlFjZCR1ZrAeISusWSPg3r7Dg8BD2Uztg==
 
 locate-path@^5.0.0:
   version "5.0.0"
