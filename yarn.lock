@@ -4375,13 +4375,13 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
 
-to-vfile@6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/to-vfile/-/to-vfile-6.1.0.tgz#5f7a3f65813c2c4e34ee1f7643a5646344627699"
-  integrity sha512-BxX8EkCxOAZe+D/ToHdDsJcVI4HqQfmw0tCkp31zf3dNP/XWIAjU4CmeuSwsSoOzOTqHPOL0KUzyZqJplkD0Qw==
+to-vfile@7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/to-vfile/-/to-vfile-7.1.0.tgz#44c26b7a5c1f325550e814ff28ad3dd00f6e1acf"
+  integrity sha512-t1c42ASuWo39ddjh2R+hX5+kbDcc2CmbhaTSJkVavDYMjnFkpq0L4LeF+rcPoDdieGUsFaivSSkmwuFpYzhBZw==
   dependencies:
     is-buffer "^2.0.0"
-    vfile "^4.0.0"
+    vfile "^5.0.0"
 
 tough-cookie@^2.3.3, tough-cookie@~2.5.0:
   version "2.5.0"
@@ -4552,6 +4552,13 @@ unist-util-stringify-position@^2.0.0:
   dependencies:
     "@types/unist" "^2.0.2"
 
+unist-util-stringify-position@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/unist-util-stringify-position/-/unist-util-stringify-position-3.0.0.tgz#d517d2883d74d0daa0b565adc3d10a02b4a8cde9"
+  integrity sha512-SdfAl8fsDclywZpfMDTVDxA2V7LjtRDTOFd44wUJamgl6OlVngsqWjxvermMYf60elWHbxhuRCZml7AnuXCaSA==
+  dependencies:
+    "@types/unist" "^2.0.0"
+
 unist-util-visit-parents@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/unist-util-visit-parents/-/unist-util-visit-parents-3.0.2.tgz#d4076af3011739c71d2ce99d05de37d545f4351d"
@@ -4652,6 +4659,14 @@ vfile-message@^2.0.0:
     "@types/unist" "^2.0.0"
     unist-util-stringify-position "^2.0.0"
 
+vfile-message@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/vfile-message/-/vfile-message-3.0.1.tgz#b9bcf87cb5525e61777e0c6df07e816a577588a3"
+  integrity sha512-gYmSHcZZUEtYpTmaWaFJwsuUD70/rTY4v09COp8TGtOkix6gGxb/a8iTQByIY9ciTk9GwAwIXd/J9OPfM4Bvaw==
+  dependencies:
+    "@types/unist" "^2.0.0"
+    unist-util-stringify-position "^3.0.0"
+
 vfile-reporter@6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/vfile-reporter/-/vfile-reporter-6.0.1.tgz#45d4dc11df2e312196ea2ceb95e42a67fc8ce814"
@@ -4684,6 +4699,16 @@ vfile@^4.0.0:
     replace-ext "1.0.0"
     unist-util-stringify-position "^2.0.0"
     vfile-message "^2.0.0"
+
+vfile@^5.0.0:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/vfile/-/vfile-5.0.1.tgz#41c6d50d419e700424ef577fbc00dd6bc6487b7e"
+  integrity sha512-lbcf0k66x96Syy36HG+nIBFaSD/fAk589q4nETZTr0JW7eRRmrVo1vHwbD8NlHszUM5ICtFSWQ5xHC292hYZ/w==
+  dependencies:
+    "@types/unist" "^2.0.0"
+    is-buffer "^2.0.0"
+    unist-util-stringify-position "^3.0.0"
+    vfile-message "^3.0.0"
 
 w3c-hr-time@^1.0.1:
   version "1.0.2"
